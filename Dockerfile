@@ -1,0 +1,32 @@
+# build react application
+FROM node:14-alpine as frontend
+
+#set working directory to app
+WORKDIR /app
+
+#copy package.json file in working directory
+COPY package*.json ./
+
+#installing neccessary packages
+RUN  npm install
+
+#copy all the files from current directory to docker image directory /app
+COPY . .
+
+#builds react file ready for hosting
+RUN npm run build
+
+#get nginx image
+FROM nginx:alpine
+
+#copy built file in nginx serving directory
+COPY --from=frontend /app/build /usr/share/nginx/html
+
+#copies nginx.conf if we need to make same changes, optional
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+#expose on port 80 for http traffic
+EXPOSE 80
+
+# starts nginx and daemon off helps to run nginx in foreground managed by docker
+CMD [ "nginx", "-g", "daemon off;" ]
