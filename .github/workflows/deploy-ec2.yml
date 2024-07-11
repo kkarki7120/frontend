@@ -44,10 +44,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT}}
           script: |
-            docker pull kkarki7120/frontend:latest
-            docker stop frontend || true
-            docker rm frontend || true
-            docker run -d --name frontend -p 80:80 kkarki7120/frontend:latest
+            sudo docker pull kkarki7120/frontend:latest
+            sudo docker stop frontend || true
+            sudo docker rm frontend || true
+            sudo docker run -d --name frontend -p 80:80 kkarki7120/frontend:latest
             echo "It is completed succesfully"
 
       
