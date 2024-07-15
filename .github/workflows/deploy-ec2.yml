@@ -47,7 +47,7 @@ jobs:
             sudo docker pull kkarki7120/frontend:latest
             sudo docker stop frontend || true
             sudo docker rm frontend || true
-            sudo docker run -d --name frontend -p 80:80 kkarki7120/frontend:latest
+            sudo docker run -d --name frontend --network=host kkarki7120/frontend:latest
             echo "It is completed succesfully"
 
       

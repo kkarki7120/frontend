@@ -21,7 +21,7 @@ const FormComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/submit', formData);
+      const response = await axios.post('http://52.77.220.45:4000/submit', formData);
       setResponseMessage(response.data.message);
     } catch (error) {
       setResponseMessage('An error occurred');

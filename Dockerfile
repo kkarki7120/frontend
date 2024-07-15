@@ -1,5 +1,5 @@
 # build react application
-FROM node:14-alpine as frontend
+FROM node:14 as frontend
 
 #set working directory to app
 WORKDIR /app
