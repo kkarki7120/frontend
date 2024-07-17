@@ -13,9 +13,14 @@ RUN  npm install
 #copy all the files from current directory to docker image directory /app
 COPY . .
 
+RUN npm run build
 
-#expose on port 3000 for http traffic
-EXPOSE 3000
+FROM nginx:alpine as deployment
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+#expose on port 80 for http traffic
+EXPOSE 80
 
 # starts nginx and daemon off helps to run nginx in foreground managed by docker
-CMD [ "npm", "start" ]
+CMD ["nginx", "-g", "daemon off;"]
