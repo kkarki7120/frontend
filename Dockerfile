@@ -17,7 +17,7 @@ RUN npm run build
 
 FROM nginx:alpine as deployment
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=frontend /app/build /usr/share/nginx/html
 
 #expose on port 80 for http traffic
 EXPOSE 80
