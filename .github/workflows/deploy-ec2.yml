@@ -2,6 +2,8 @@ name: Build, Push Docker Image and Deploy to EC2
 
 on:
   push:
+    tags:
+      - 'v*.*.*'
     branches:
       - main
 
