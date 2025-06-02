@@ -19,3 +19,4 @@ create mysql database in local machine and run command
 you need to copy project to your own repo and change the yml file according to it. you need to mention your credentials in secrets of your github repo
 
 for more info on this process you can go through
+ hello
